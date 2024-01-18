@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>Hello</title>
+</head>
+<body>
+    <p>u1</p>
+    <p>Hello {{- .u1.Name -}}</p>
+    <p>年龄 {{ .u1.Age }}</p>
+    <p>性别 {{ .u1.Gender }}</p>
+    <p>m1</p>
+    <p>Hello {{ .m1.Name }}</p>
+    <p>年龄 {{ .m1.Age }}</p>
+    <p>性别 {{ .m1.Gender}}</p>
+<hr>
+{{ $v1 := 18}}
+{{ $age := .m1.age}}
+<hr>
+{{ if lt .u1.Age $v1 }}
+    <p>u1年龄大于18</p>
+{{ else }}
+    <p>u1年龄小于18</p>
+{{ end }}
+<hr>
+{{ range $idx, $hobby := .hobbyList}}
+    <p>{{$idx}} - {{$hobby}}</p>
+{{else}}
+    <p>没有爱好</p>
+{{ end }}
+
+<hr>
+<p>m1</p>
+{{with .m1}}
+    <p>Hello {{ .mName }}</p>
+    <p>年龄 {{ .Age }}</p>
+    <p>性别 {{ .Gender}}</p>
+{{end}}
+</body>
+</html>
